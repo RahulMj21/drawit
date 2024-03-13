@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { Button, LinkButton } from "@/components/ui/button";
 import CTA from "@/components/navigation/cta";
+import LogoutButton from "@/components/navigation/logoutButton";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +14,9 @@ const NAV_LINKS = [
   { text: "Blog", path: "/" },
 ];
 
-export const Header = () => {
+export const Header = async () => {
+  const { isAuthenticated } = getKindeServerSession();
+
   return (
     <header>
       <div className="mx-auto flex justify-between h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -38,7 +42,11 @@ export const Header = () => {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <CTA />
+          {(await isAuthenticated()) ? (
+            <LinkButton href="/dashboard">Dashboard</LinkButton>
+          ) : (
+            <CTA />
+          )}
 
           <Button className="transition md:hidden">
             <span className="sr-only">Toggle menu</span>
