@@ -31,7 +31,7 @@ export const Header = async () => {
               {NAV_LINKS.map(({ text, path }) => (
                 <li key={text}>
                   <Link
-                    className="text-gray-600/80 transition hover:duration-500 hover:text-gray-600"
+                    className="text-gray-600/80 font-medium transition hover:duration-500 hover:text-gray-600"
                     href={path}
                   >
                     {text}

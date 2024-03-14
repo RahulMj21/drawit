@@ -9,13 +9,9 @@ export const getUser = query({
     const result = await ctx.db
       .query("user")
       .filter((q) => q.eq(q.field("email"), args.email))
-      .collect();
+      .first();
 
-    if (result && result.length > 0) {
-      return result[0];
-    }
-
-    return null;
+    return result ? result : null;
   },
 });
 
