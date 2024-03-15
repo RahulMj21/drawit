@@ -1,9 +1,8 @@
 import { Button, LinkButton } from "@/components/ui/button";
 import CTA from "@/components/navigation/cta";
-import LogoutButton from "@/components/navigation/logoutButton";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/components/navigation/logo";
 
 const NAV_LINKS = [
   { text: "About", path: "/" },
@@ -20,10 +19,7 @@ export const Header = async () => {
   return (
     <header>
       <div className="mx-auto flex justify-between h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <Link className="block text-xl font-bold tracking-wide" href="/">
-          <span className="sr-only">Home</span>
-          <Image src="/logo.svg" alt="Drawit Logo" height={100} width={90} />
-        </Link>
+        <Logo />
 
         <div className="flex items-center">
           <nav aria-label="Global" className="hidden md:block">

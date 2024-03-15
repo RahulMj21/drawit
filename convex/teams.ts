@@ -7,7 +7,7 @@ export const getTeam = query({
   },
   handler: async (ctx, args) => {
     const result = await ctx.db
-      .query("teams")
+      .query("team")
       .filter((q) => q.eq(q.field("createdBy"), args.email))
       .collect();
 

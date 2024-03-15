@@ -59,4 +59,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  button,
+  a,
+  input,
+  textarea,
+  div {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-purple-400/70;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply w-[80rem] max-w-[90%] mx-auto;
+  }
 }

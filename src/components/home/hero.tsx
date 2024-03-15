@@ -18,14 +18,14 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <LinkButton className="px-12 py-3 h-auto" href="/api/auth/login">
+            <LinkButton className="px-12 py-3 h-auto" href="/dashboard">
               Get Started
             </LinkButton>
 
             <LinkButton
               variant="shadow"
               className="px-12 py-3 h-auto"
-              href="/api/auth/login"
+              href="/dashboard"
             >
               Learn More
             </LinkButton>
