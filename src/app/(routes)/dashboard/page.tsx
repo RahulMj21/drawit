@@ -6,7 +6,7 @@ const Dashboard = () => {
   useCheckUser();
 
   return (
-    <div className="p-8 flex gap-4">
+    <div className="p-4 flex gap-4">
       <h1>Dashboard Page</h1>
       <LogoutButton />
     </div>

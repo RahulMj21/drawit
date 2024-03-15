@@ -13,7 +13,7 @@ const useCheckTeam = () => {
   const checkTeam = useCallback(async () => {
     try {
       if (!user || !user?.email) return;
-      const result = await convex.query(api.teams.getTeam, {
+      const result = await convex.query(api.team.getTeams, {
         email: user.email,
       });
       if (result === null) {

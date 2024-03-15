@@ -11,6 +11,8 @@ import { api } from "@/convex/_generated/api";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import ToastMessage from "@/components/common/toastMessage";
 
 interface CreateTeamFormProps {
   className?: string;
@@ -25,12 +27,11 @@ const CreateTeamForm = ({ className }: CreateTeamFormProps) => {
     reset,
     formState: { errors },
   } = useForm<TCreateTeamInput>({
-    mode: "onChange",
     resolver: zodResolver(CreateTeamSchema),
   });
 
   const { user } = useKindeBrowserClient();
-  const createTeam = useMutation(api.teams.createTeam);
+  const createTeam = useMutation(api.team.createTeam);
 
   const onSubmit: SubmitHandler<TCreateTeamInput> = async (values) => {
     try {
@@ -43,9 +44,11 @@ const CreateTeamForm = ({ className }: CreateTeamFormProps) => {
       });
       if (!data) return;
 
+      toast.success(<ToastMessage>Team created successfully</ToastMessage>);
       reset();
       router.push("/dashboard");
     } catch (err) {
+      toast(<ToastMessage>Oops! Something went wrong</ToastMessage>);
     } finally {
       setIsLoading(false);
     }

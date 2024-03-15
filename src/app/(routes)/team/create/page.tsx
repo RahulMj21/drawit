@@ -11,11 +11,11 @@ const Create = () => {
       </header>
       <main className="flex flex-col gap-6 py-16 text-center">
         <h1 className="text-3xl text-gray-700 font-extrabold sm:text-5xl">
-          You are about to create
-          <br /> your first team.
+          What should we call
+          <br /> your team?
         </h1>
         <h2 className="text-gray-600/80">
-          Create a team first to get started with your new journey with us.
+          You can change it anytime from the settings.
         </h2>
         <CreateTeamForm />
       </main>
