@@ -9,11 +9,9 @@ import { ChevronDown, LogOut, Settings, Users } from "lucide-react";
 import Link from "next/link";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
+import { useTeamStore } from "@/store/teamStore";
+import { cn } from "@/lib/utils";
 
-const TEAMS = [
-  { _id: "1", name: "Test Team 1" },
-  { _id: "2", name: "Test Team 2" },
-];
 const ACTIONS = [
   { text: "Create New Team", icon: <Users className="h-4 w-4" /> },
   { text: "Settings", icon: <Settings className="h-4 w-4" /> },
@@ -22,6 +20,7 @@ const ACTIONS = [
 
 const TeamDetailsPopover = () => {
   const { user } = useKindeBrowserClient();
+  const { teams } = useTeamStore();
 
   return (
     <Popover>
@@ -29,18 +28,21 @@ const TeamDetailsPopover = () => {
         <div className="flex gap-2 items-center px-3 py-2 transition-colors duration-500 rounded-md hover:bg-gray-300">
           <LogoIcon height="20" />
           <p className="flex items-center gap-1 font-bold text-zinc-700">
-            <span>Test Team 1</span>
+            <span>{teams[0].name}</span>
             <ChevronDown className="h-4 w-4" />
           </p>
         </div>
       </PopoverTrigger>
       <PopoverContent className="text-sm w-[14.5rem] mx-2 flex flex-col gap-1 break-all p-2">
         <div className="w-full flex flex-col text-left">
-          {TEAMS.map(({ _id, name }) => (
+          {teams.map(({ _id, name }) => (
             <Link
               key={_id}
               href="#"
-              className="p-2 rounded-sm transition-colors text-left hover:bg-gray-100"
+              className={cn(
+                "p-2 rounded-sm transition-colors text-left hover:bg-gray-100",
+                "font-semibold",
+              )}
             >
               {name}
             </Link>

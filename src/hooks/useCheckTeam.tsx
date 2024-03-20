@@ -1,4 +1,5 @@
 import { api } from "@/convex/_generated/api";
+import { useTeamStore } from "@/store/teamStore";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
 import { useRouter } from "next/navigation";
@@ -9,6 +10,7 @@ const useCheckTeam = () => {
   const convex = useConvex();
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useKindeBrowserClient();
+  const { setTeams } = useTeamStore();
 
   const checkTeam = useCallback(async () => {
     try {
@@ -19,6 +21,7 @@ const useCheckTeam = () => {
       if (result === null) {
         router.push("/team/create");
       } else {
+        setTeams(result);
         setIsLoading(false);
       }
     } catch (error) {

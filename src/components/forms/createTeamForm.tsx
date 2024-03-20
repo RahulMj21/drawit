@@ -13,6 +13,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import ToastMessage from "@/components/common/toastMessage";
+import { useUserStore } from "@/store/userStore";
+import { useTeamStore } from "@/store/teamStore";
 
 interface CreateTeamFormProps {
   className?: string;
@@ -31,7 +33,9 @@ const CreateTeamForm = ({ className }: CreateTeamFormProps) => {
   });
 
   const { user } = useKindeBrowserClient();
+  const { setActiveTeam } = useTeamStore();
   const createTeam = useMutation(api.team.createTeam);
+  const updateUser = useMutation(api.user.updateUser);
 
   const onSubmit: SubmitHandler<TCreateTeamInput> = async (values) => {
     try {
@@ -43,6 +47,9 @@ const CreateTeamForm = ({ className }: CreateTeamFormProps) => {
         createdBy: user.email,
       });
       if (!data) return;
+
+      // updateUser()
+      setActiveTeam(data);
 
       toast.success(<ToastMessage>Team created successfully</ToastMessage>);
       reset();

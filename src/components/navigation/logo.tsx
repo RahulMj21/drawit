@@ -14,7 +14,9 @@ const Logo = ({ height, width }: LogoProps) => {
       href="/"
     >
       <span className="sr-only">Home</span>
-      <LogoIcon height="25" />
+      <span className="inline-block h-6 w-6">
+        <LogoIcon height="25" width="25" />
+      </span>
       <Image
         src="/logo.svg"
         alt="Drawit Logo"

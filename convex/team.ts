@@ -1,12 +1,13 @@
 import { v } from "convex/values";
 import { mutation, query } from "@/convex/_generated/server";
+import { ITeam } from "@/types";
 
 export const getTeams = query({
   args: {
     email: v.string(),
   },
   handler: async (ctx, args) => {
-    const result = await ctx.db
+    const result: ITeam[] = await ctx.db
       .query("team")
       .filter((q) => q.eq(q.field("createdBy"), args.email))
       .collect();

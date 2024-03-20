@@ -6,7 +6,6 @@ import Logo from "@/components/navigation/logo";
 
 const NAV_LINKS = [
   { text: "About", path: "/" },
-  { text: "Careers", path: "/" },
   { text: "History", path: "/" },
   { text: "Services", path: "/" },
   { text: "Projects", path: "/" },

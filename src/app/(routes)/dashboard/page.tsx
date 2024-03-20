@@ -1,4 +1,5 @@
 "use client";
+
 import LogoutButton from "@/components/navigation/logoutButton";
 import useCheckUser from "@/hooks/useCheckUser";
 
