@@ -10,10 +10,9 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 214.12 100% 50%;
+    --primary-foreground: 0 0% 100%;
     --brand: 261, 36%, 39%;
-    /* --brand: 222.2 47.4% 11.2%; */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -35,9 +34,8 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --brand: 261, 36%, 39%;
+    --primary: 220 100% 44%;
+    --primary-foreground: 220 10% 97.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
@@ -64,12 +62,25 @@
   input,
   textarea,
   div {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-purple-400/70;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-blue-400/70;
   }
 }
 
 @layer utilities {
   .container {
     @apply w-[80rem] max-w-[90%] mx-auto;
+  }
+  .bg-square-gradient {
+    @apply bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)];
+  }
+  .bg-radial-gradient {
+    @apply bg-[radial-gradient(circle_400px_at_100%_200px,#d5c5ff,transparent)] md:bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)];
+  }
+
+  .dark .bg-square-gradient {
+    @apply bg-[linear-gradient(to_right,#081221_1px,transparent_1px),linear-gradient(to_bottom,#081221_1px,transparent_1px)];
+  }
+  .dark .bg-radial-gradient {
+    @apply bg-[radial-gradient(circle_400px_at_100%_200px,#142542,transparent)] md:bg-[radial-gradient(circle_800px_at_100%_200px,#142542,transparent)];
   }
 }

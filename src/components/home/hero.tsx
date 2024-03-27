@@ -5,14 +5,14 @@ const Hero = () => {
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-28 lg:flex lg:items-center">
         <div className="mx-auto max-w-xl text-center">
-          <h1 className="text-3xl text-gray-700 font-extrabold sm:text-5xl">
+          <h1 className="text-3xl text-secondary-foreground/80 font-extrabold sm:text-5xl">
             Diagrams made simple{" "}
             <strong className="mt-2 font-extrabold text-brand sm:block">
               Like never before.
             </strong>
           </h1>
 
-          <p className="mt-4 sm:text-lg text-gray-600/80">
+          <p className="mt-4 sm:text-lg text-muted-foreground">
             Add diagrams, mindmaps and mental models along with documentation
             with ease.
           </p>
@@ -23,7 +23,7 @@ const Hero = () => {
             </LinkButton>
 
             <LinkButton
-              variant="shadow"
+              variant="outline"
               className="px-12 py-3 h-auto"
               href="/dashboard"
             >

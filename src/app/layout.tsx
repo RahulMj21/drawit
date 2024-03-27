@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import ConvexClientProvider from "@/lib/ConvexClientProvider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ui/themeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("bg-background", inter.className)}>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
