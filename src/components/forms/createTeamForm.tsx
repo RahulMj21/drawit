@@ -75,7 +75,7 @@ const CreateTeamForm = ({ className }: CreateTeamFormProps) => {
           {errors.name?.message}
         </p>
       </div>
-      <Button isLoading={isLoading}>Create</Button>
+      <Button>Create</Button>
     </form>
   );
 };
