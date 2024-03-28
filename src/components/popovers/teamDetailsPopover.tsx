@@ -15,7 +15,11 @@ import { cn } from "@/lib/utils";
 const ACTIONS = [
   { text: "Create New Team", icon: <Users className="h-4 w-4" /> },
   { text: "Settings", icon: <Settings className="h-4 w-4" /> },
-  { text: "Log Out", icon: <LogOut className="h-4 w-4" /> },
+  {
+    text: "Log Out",
+    icon: <LogOut className="h-4 w-4" />,
+    href: "/api/auth/logout",
+  },
 ];
 
 const TeamDetailsPopover = () => {
@@ -25,9 +29,9 @@ const TeamDetailsPopover = () => {
   return (
     <Popover>
       <PopoverTrigger className="w-full">
-        <div className="flex gap-2 items-center px-3 py-2 transition-colors duration-500 rounded-md hover:bg-gray-300">
+        <div className="flex gap-2 items-center px-3 py-2 transition-colors duration-500 rounded-md hover:bg-secondary">
           <LogoIcon height="20" />
-          <p className="flex items-center gap-1 font-bold text-zinc-700">
+          <p className="flex items-center gap-1 font-bold text-secondary-foreground/80">
             <span>{teams[0].name}</span>
             <ChevronDown className="h-4 w-4" />
           </p>
@@ -40,7 +44,7 @@ const TeamDetailsPopover = () => {
               key={_id}
               href="#"
               className={cn(
-                "p-2 rounded-sm transition-colors text-left hover:bg-gray-100",
+                "p-2 rounded-sm transition-colors text-left hover:bg-muted text-secondary-foreground",
                 "font-semibold",
               )}
             >
@@ -52,15 +56,26 @@ const TeamDetailsPopover = () => {
         <Separator />
 
         <div className="w-full flex flex-col text-left">
-          {ACTIONS.map(({ text, icon }) => (
-            <button
-              key={text}
-              className="flex gap-2 items-center p-2 rounded-sm transition-colors text-left hover:bg-gray-100"
-            >
-              {icon}
-              <span>{text}</span>
-            </button>
-          ))}
+          {ACTIONS.map(({ text, icon, href }) =>
+            href ? (
+              <Link
+                href={href}
+                key={text}
+                className="flex gap-2 items-center p-2 rounded-sm transition-colors text-left hover:bg-muted"
+              >
+                {icon}
+                <span>{text}</span>
+              </Link>
+            ) : (
+              <button
+                key={text}
+                className="flex gap-2 items-center p-2 rounded-sm transition-colors text-left hover:bg-muted"
+              >
+                {icon}
+                <span>{text}</span>
+              </button>
+            ),
+          )}
         </div>
 
         <Separator />
@@ -75,8 +90,10 @@ const TeamDetailsPopover = () => {
             />
           </div>
           <div className="flex flex-col gap-[2px]">
-            <h4 className="text-sm font-semibold text-zinc-700">{`${user?.given_name} ${user?.family_name}`}</h4>
-            <p className="text-xs text-gray-500 leading-3">{user?.email}</p>
+            <h4 className="text-sm font-semibold text-secondary-foreground/80">{`${user?.given_name} ${user?.family_name}`}</h4>
+            <p className="text-xs text-muted-foreground leading-3">
+              {user?.email}
+            </p>
           </div>
         </div>
       </PopoverContent>

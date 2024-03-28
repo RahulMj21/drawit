@@ -1,8 +1,10 @@
-import { Button, LinkButton } from "@/components/ui/button";
-import CTA from "@/components/navigation/cta";
+import { LinkButton } from "@/components/ui/button";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { Button } from "@/components/ui/button";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import Logo from "@/components/navigation/logo";
+import { ModeToggle } from "@/components/ui/modeToggle";
 
 const NAV_LINKS = [
   { text: "About", path: "/" },
@@ -37,29 +39,14 @@ export const Header = async () => {
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <ModeToggle />
           {(await isAuthenticated()) ? (
             <LinkButton href="/dashboard">Dashboard</LinkButton>
           ) : (
-            <CTA />
+            <LoginLink>
+              <Button>Log In</Button>
+            </LoginLink>
           )}
-
-          <Button className="transition md:hidden">
-            <span className="sr-only">Toggle menu</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </Button>
         </div>
       </div>
     </header>
